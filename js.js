@@ -1,26 +1,32 @@
-// Lista de frutas e suas dicas
 const fruits = [
-    { name: "limão", hint: "É uma fruta que começa com a letra 'L'", additionalHint: "E uma fruta acida" },
-    { name: "Maçã", hint: "É uma fruta que começa com a letra 'M'", additionalHint: "Branca de neve comeu" },
-    { name: "coco", hint: "É uma fruta que começa com a letra 'C'", additionalHint: "E uma fruta que tem agua dentro" },
-    { name: "jaca", hint: "É uma fruta que começa com a letra 'j'", additionalHint: "e uma fruta grande e espinhosa" },
-    { name: "melão", hint: "É uma fruta que começa com a letra 'M'", additionalHint: "e uma fruta doce e amarelo por fora " }
-  ];
-  
-  let currentFruitIndex = 0;
-  let attempts = 3;
-  let score = 0;
-  
-  // Função para escolher uma fruta aleatória e exibir sua dica
-  function chooseFruit() {
-    if (currentFruitIndex < fruits.length) {
-      document.querySelector("p").textContent = `Dica: ${fruits[currentFruitIndex].hint}`;
-      // Limpar a dica adicional quando uma nova fruta for escolhida
+  { name: "limão", hint: "É uma fruta que começa com a letra 'L'"},
+  { name: "Maçã", hint: "É uma fruta que começa com a letra 'M'"},
+  { name: "coco", hint: "É uma fruta que começa com a letra 'C'"},
+  { name: "jaca", hint: "É uma fruta que começa com a letra 'J'"},
+  { name: "melão", hint: "É uma fruta que começa com a letra 'M'" },
+  { name: "manga", hint: "É uma fruta que começa com a letra 'M'" },
+  { name: "caju", hint: "É uma fruta que começa com a letra 'C'" },
+  { name: "kiwi", hint: "É uma fruta que começa com a letra 'M'" },
+  { name: "mamão", hint: "É uma fruta que começa com a letra 'M'" },
+  { name: "amora", hint: "É uma fruta que começa com a letra 'A'" }
+];
+
+let currentFruitIndex = 0;
+let attempts = 3;
+let score = 0;
+
+function chooseFruit() {
+  if (currentFruitIndex < fruits.length) {
+      const currentFruit = fruits[currentFruitIndex];
+      const firstLetter = currentFruit.name.charAt(0).toUpperCase();
+      document.getElementById("currentWord").textContent = currentFruit.name; 
+      document.getElementById("hintText").textContent = currentFruit.hint;
+      document.getElementById("firstLetter").textContent = firstLetter;
       document.getElementById("additionalHint").textContent = "";
-    } else {
+  } else {
       endGame();
-    }
   }
+}
   
   // Função para verificar a resposta do jogador
   function guess() {
